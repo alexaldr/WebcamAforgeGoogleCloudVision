@@ -2,7 +2,7 @@
 
 Este projeto visa integrar a API de visão da Google para detecção de rostos, emoções e pontos de referência em imagens capturadas pela webcam, utilizando o Framework Aforge.NET para acesso ao dispositivo de imagem.
 
-##Metas
+## Metas
 
 - [x] Conectar aos dispositivos de vídeo;
 - [x] Salvar a imagem obtida do dispositivo de vídeo;
