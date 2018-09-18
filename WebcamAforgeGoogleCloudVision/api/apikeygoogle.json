@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "cedar-kiln-216521",
+  "private_key_id": "232eb3b5fa73b2dd436e8c6570f2d111d897b6a5",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCtEn9Q+A9xFv55\nRDlLMyR0N1JJa0O02CQbSlP9pOBYL0XOoEb3p09zklbAVoDieqyfpaMHRL2QxY6z\nFGVgmDJx4kJxLfpgQyt7hYppElZPE9291q8MGCGZl4W5OKcPb8zYcHjuKCyHs4te\nvwcZNjeWkDMKbgi5uIGiMuzFpWJgc1mLa4f8QO+L6NF60a3XgC5CDQ4Har6CtO11\nyWqPB9XxicVNx2VtTgVZPc2gTiehhc46laPjfBDcc8sP5J7+4ixy6VCgnHEFu7uy\n9DlwkQe44q+WK5TbwYcjIPlb0fbjJMVjZHCftBt42JFdjLxQDDCLJe421iT8GL+7\nrvXMzCTBAgMBAAECggEADAdsF+mV0Sti9nS6crKURwuNSZMN+qTHJapt2gQ6n4Zx\nmKHlLNNRH1w9cVLR1GvoUZRGl3u8nTJN775sKWGKqAWszob+jvA8NnKaoyDmJMrh\nr48bTYDj3PP+FFiOq/D+UNDIZu0d4zSkbCpkyOjOxkUxdvkc3COpxuc5M6eCBegB\nIXL/AeBabR0x0wau+fd6Jtl8l/lYAiyOEgZrf4mjOfo+rvlSQJpfoEP6gB0/1dmi\nJwCtxW/3j56ors+c1rcDTsgcYyN6/8GE1DjeLKwx7hwOL/JqFxX6L4K4qUQwJZ6W\nlp0Wn57WV3P6nrz2hXdt4guz0+ZUanOkMUhvZfdDrQKBgQDmSlhABsoxmugZSecd\n0kjxfaIULjNcq4UidVCl14Z7OYdOYioS+1r6dO59RTTmvo6g3uhpjmO5XO3QnRF3\newILTqWObYKzIVwRyL5rmgIrHDttijqN493ro5YtDbk8857Cw98rhw520wxscDMj\nJh45HC1acbHfkZ5j9WY3w8ueHwKBgQDAZN5s8mieRgBiwG1081/O/Icbtl/noN0p\njqKcB2q33fnFtAfP5GXLSp6gxpIlkRvu4ci5LHnLzaG5nwoG9K5jskN31JOGEfsH\ngXd7XARYoe/pFCtc335fVa1L4l2ptD7KaOkSP/ZoU5y0psijiXnHBFKtFVVC9JAg\n73Hma/4hHwKBgA3+8LQbdYhkQLzgt/IhCJvcpdASKr70EahRdvBNU/gDPAzwfFwg\n+JuGJcRpQ1jOtf5i7b8Uj00Br9Zg5WHckPg89GTelPXsDhtqluAVQRJ7qcTzhLGA\n6sjabVMZpWtl5v0xSEvt7lwcYYHpo8H8HBQeeUco58WNpRGwJWE4PhTDAoGAfUvz\n024XliQusiFx531sgwfREco3MUmBX0QmQIlQBgjJVulFQS4U4U1qe3h2y4Jyd6OR\nro75jzIPRiz+QcNuIz2AVPUbUnA5VQ0K/ErUBckIznm1N9nRmlLY9peouhHJ5tZm\nG92OIyl43+nStzacGXGGSnSfP2i4yMpIGnFwYq8CgYAw+RoRvkR+GmQfnO+mJnAH\n0hRFdCEItu6fBl/pOreRy/hTNGaFLi8P5O2TWiwKGBVN23ITuFWaGu0i4BECnULD\n579ORMwkzYvku7bWnRZOn/LM3k7xMW68IwYHVEDcMT29gxNwWs9PdOnwjIl4mKkX\nrMSMrNpGivAeqQcbD4W2ww==\n-----END PRIVATE KEY-----\n",
+  "client_email": "webcamaforge@cedar-kiln-216521.iam.gserviceaccount.com",
+  "client_id": "112027900125389387167",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/webcamaforge%40cedar-kiln-216521.iam.gserviceaccount.com"
+}
