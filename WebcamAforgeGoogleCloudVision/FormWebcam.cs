@@ -1,19 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+//using System.Collections.Generic;
+//using System.ComponentModel;
+//using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
 using System.Windows.Forms;
 using AForge.Video.DirectShow;      //framework adicionado pelo nuget
 using AForge.Video;                 //framework adicionado pelo nuget
 using Google.Cloud.Vision.V1;       //api adicionada pelo nuget
-using Newtonsoft.Json;              //biblioteca adicionada pelo nuget
+//using Newtonsoft.Json;              //biblioteca adicionada pelo nuget
 using System.Drawing.Imaging;
-using Google.Apis.Auth.OAuth2;
-using System.IO;
+//using Google.Apis.Auth.OAuth2;
+//using System.IO;
 
 namespace WebcamAforgeGoogleCloudVision
 {
@@ -82,6 +82,7 @@ namespace WebcamAforgeGoogleCloudVision
         private void AlterarComboDispositivo()
         {
             LiberarDispositivo();
+            //dispositivo.
             dispositivo = new VideoCaptureDevice(dispositivos[cbDispositivo.SelectedIndex].MonikerString);
             //linkar os métodos para clonar os frames
             dispositivo.NewFrame += NovoFrame;
@@ -109,6 +110,8 @@ namespace WebcamAforgeGoogleCloudVision
             if (dispositivo.IsRunning)
             {
                 dispositivo.Stop();
+                //this.pbWebcam.Image = null;
+                //pbWebcam.Invoke(new Action(() => pbWebcam.Image = null));
                 pbWebcam.Image = null;
             }
         }
@@ -119,8 +122,16 @@ namespace WebcamAforgeGoogleCloudVision
             {
                 pbWebcam.Image.Dispose();
             }
+
+
+            //Utilizar INVOKE PARA TENTAR RESOLEVR ESTE PROBLEMA
+            //if (this.InvokeRequired)
+            //{
+            //    pbWebcam.Invoke(new Action(() => pbWebcam.Image = (Bitmap)eventArgs.Frame.Clone()));
+            //}
             pbWebcam.Image = (Bitmap)eventArgs.Frame.Clone();
         }
+
 
         private void cbDispositivo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -217,7 +228,7 @@ namespace WebcamAforgeGoogleCloudVision
 
         private void btSalvar_Click(object sender, EventArgs e)
         {
-            if (pbWebcam.Image != null)
+            if (this.pbWebcam.Image != null)
             {
 
                 //remover o link
@@ -247,7 +258,7 @@ namespace WebcamAforgeGoogleCloudVision
                         {
                             lock (this)
                             {
-                                Bitmap imagem = (Bitmap)pbWebcam.Image;
+                                Bitmap imagem = (Bitmap)this.pbWebcam.Image;
                                 imagem.Save(saveFileDialog.FileName, format);
                                 MessageBox.Show("Imagem salva com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
@@ -273,6 +284,16 @@ namespace WebcamAforgeGoogleCloudVision
             {
                 MessageBox.Show("O dispositivo não foi iniciado!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void pbWebcam_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btExecutar_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
