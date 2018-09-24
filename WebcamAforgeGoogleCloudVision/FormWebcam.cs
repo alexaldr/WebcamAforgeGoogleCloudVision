@@ -19,8 +19,8 @@ namespace WebcamAforgeGoogleCloudVision
 {
     public partial class FormWebcam : Form
     {
-        private FilterInfoCollection dispositivos;
-        private VideoCaptureDevice dispositivo;
+        private FilterInfoCollection allDevices;
+        private VideoCaptureDevice currentDevice;
         private SaveFileDialog saveFileDialog;
         private OpenFileDialog openFileDialog;
 
@@ -31,89 +31,83 @@ namespace WebcamAforgeGoogleCloudVision
 
         private void FormWebcam_Load(object sender, EventArgs e)
         {
-            AtualizarDispositivos();
-        }
-
-        private void AtualizarDispositivos()
-        {
-            dispositivos = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-
-            if (dispositivos != null && dispositivos.Count != 0)
+            this.allDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            cboDevices.SelectedIndex = -1;
+            cboDevices.Items.Clear();
+            bool hasDevices = false;
+            if (allDevices.Count != 0)
             {
-                AtualizarComboDispositivos();
-                cbDispositivo.SelectedIndex = 0;
-                AtualizarComboResolucao();
-            }
-            else
-            {
-                cbDispositivo.Items.Add("Nenhum dispositivo encontrado!");
-                cbDispositivo.SelectedIndex = 0;
-            }
-        }
-
-        private void AtualizarComboDispositivos()
-        {
-            cbDispositivo.Items.Clear();
-            foreach (FilterInfo webcams in dispositivos)
-            {
-                cbDispositivo.Items.Add(webcams.Name);
-            }
-            dispositivo = new VideoCaptureDevice(dispositivos[0].MonikerString);
-        }
-
-        private void AtualizarComboResolucao()
-        {
-            if (dispositivo.VideoCapabilities.Length != 0)
-            {
-                cbResolucao.Items.Clear();
-                foreach (VideoCapabilities resolucoes in dispositivo.VideoCapabilities)
+                foreach (FilterInfo currentCam in allDevices)
                 {
-                    cbResolucao.Items.Add(string.Format("{0} x {1}", resolucoes.FrameSize.Width, resolucoes.FrameSize.Height));
+                    cboDevices.Items.Add(currentCam.Name);
+                    hasDevices = true;
                 }
-                cbResolucao.SelectedIndex = 0;
-                AlterarComboResolucao();
             }
             else
             {
-                cbDispositivo.Items.Add("Não disponível!");
+                cboDevices.Items.Add("Nenhum dispositivo encontrado!");
             }
+            cboDevices.Enabled = hasDevices;
+            cboDevices.SelectedIndex = 0;
+
+            //AtualizarComboResolucao();
         }
 
-        private void AlterarComboDispositivo()
+        private void cbDispositivo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LiberarDispositivo();
-            //dispositivo.
-            dispositivo = new VideoCaptureDevice(dispositivos[cbDispositivo.SelectedIndex].MonikerString);
-            //linkar os métodos para clonar os frames
-            dispositivo.NewFrame += NovoFrame;
-            AtualizarComboResolucao();
-            InicializarDispositivo();
-        }
-
-        private void AlterarComboResolucao()
-        {
-            LiberarDispositivo();
-            dispositivo.VideoResolution = dispositivo.VideoCapabilities[cbResolucao.SelectedIndex];
-            InicializarDispositivo();
-        }
-
-        private void InicializarDispositivo()
-        {
-            if (!dispositivo.IsRunning)
+            cboCapabilities.SelectedIndex = -1;
+            cboCapabilities.Items.Clear();
+            bool hasResolution = false;
+            if (cboDevices.Enabled)
             {
-                dispositivo.Start();
+                currentDevice = new VideoCaptureDevice(allDevices[cboDevices.SelectedIndex].MonikerString);
+            }
+
+            if (currentDevice != null && currentDevice.VideoCapabilities.Length != 0)
+            {
+                foreach (VideoCapabilities capability in currentDevice.VideoCapabilities)
+                {
+                    cboCapabilities.Items.Add($"{capability.FrameSize.Width}x{capability.FrameSize.Height} - {capability.MaximumFrameRate} FPS" );
+                    hasResolution = true;
+                }
+            }
+            else
+            {
+                cboCapabilities.Items.Add("Não disponível!");
+            }
+            cboCapabilities.Enabled = hasResolution;
+            cboCapabilities.SelectedIndex = 0;
+        }
+
+        private void cbResolucao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            StopStream();
+            if (cboCapabilities.SelectedIndex >= 0 && cboDevices.Enabled && cboCapabilities.Enabled)
+            {
+                StartStream();
             }
         }
 
-        private void LiberarDispositivo()
+        private void StartStream()
         {
-            if (dispositivo.IsRunning)
+            if (currentDevice != null)
             {
-                dispositivo.Stop();
-                //this.pbWebcam.Image = null;
-                //pbWebcam.Invoke(new Action(() => pbWebcam.Image = null));
-                pbWebcam.Image = null;
+                currentDevice.NewFrame += NovoFrame;
+                currentDevice.VideoResolution = currentDevice.VideoCapabilities[cboCapabilities.SelectedIndex];
+                currentDevice.Start();
             }
+        }
+
+        private void StopStream()
+        {
+            if (currentDevice != null)
+            {
+                if (currentDevice.IsRunning)
+                {
+                    currentDevice.Stop();
+                }
+            }
+            pbWebcam.Image = null;
         }
 
         private void NovoFrame(object sender, NewFrameEventArgs eventArgs)
@@ -133,21 +127,13 @@ namespace WebcamAforgeGoogleCloudVision
         }
 
 
-        private void cbDispositivo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            AlterarComboDispositivo();
-        }
 
-        private void cbResolucao_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            AlterarComboResolucao();
-        }
 
         private void btSair_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Deseja realmente sair?", "Sair do aplicativo!", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
-                LiberarDispositivo();
+                StopStream();
                 Application.Exit();
             }
 
@@ -155,7 +141,7 @@ namespace WebcamAforgeGoogleCloudVision
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            LiberarDispositivo();
+            StopStream();
             base.OnFormClosing(e);
         }
 
@@ -232,7 +218,7 @@ namespace WebcamAforgeGoogleCloudVision
             {
 
                 //remover o link
-                dispositivo.NewFrame -= NovoFrame;
+                currentDevice.NewFrame -= NovoFrame;
 
                 //using para ser descartado depois
                 using (saveFileDialog = new SaveFileDialog())
@@ -278,7 +264,7 @@ namespace WebcamAforgeGoogleCloudVision
                     }
                 }
                 //linkar métodos para clonar frames
-                dispositivo.NewFrame += NovoFrame;
+                currentDevice.NewFrame += NovoFrame;
             }
             else
             {
@@ -293,7 +279,7 @@ namespace WebcamAforgeGoogleCloudVision
 
         private void btExecutar_Click(object sender, EventArgs e)
         {
-            
+
         }
     }
 }

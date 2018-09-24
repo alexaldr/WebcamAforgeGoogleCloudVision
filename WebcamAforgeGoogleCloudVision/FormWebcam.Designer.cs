@@ -30,14 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormWebcam));
             this.pbWebcam = new System.Windows.Forms.PictureBox();
-            this.cbResolucao = new System.Windows.Forms.ComboBox();
+            this.cboCapabilities = new System.Windows.Forms.ComboBox();
             this.lblResolucao = new System.Windows.Forms.Label();
             this.lblDispositivo = new System.Windows.Forms.Label();
-            this.cbDispositivo = new System.Windows.Forms.ComboBox();
-            this.btExecutar = new System.Windows.Forms.Button();
-            this.btSair = new System.Windows.Forms.Button();
-            this.btSalvar = new System.Windows.Forms.Button();
-            this.btAnalisar = new System.Windows.Forms.Button();
+            this.cboDevices = new System.Windows.Forms.ComboBox();
+            this.btnExecute = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnAnalyse = new System.Windows.Forms.Button();
             this.gbFerramentas = new System.Windows.Forms.GroupBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.pbWebcam)).BeginInit();
@@ -54,14 +54,14 @@
             this.pbWebcam.TabStop = false;
             this.pbWebcam.Click += new System.EventHandler(this.pbWebcam_Click);
             // 
-            // cbResolucao
+            // cboCapabilities
             // 
-            this.cbResolucao.FormattingEnabled = true;
-            this.cbResolucao.Location = new System.Drawing.Point(1131, 38);
-            this.cbResolucao.Name = "cbResolucao";
-            this.cbResolucao.Size = new System.Drawing.Size(121, 21);
-            this.cbResolucao.TabIndex = 13;
-            this.cbResolucao.SelectedIndexChanged += new System.EventHandler(this.cbResolucao_SelectedIndexChanged);
+            this.cboCapabilities.FormattingEnabled = true;
+            this.cboCapabilities.Location = new System.Drawing.Point(1131, 38);
+            this.cboCapabilities.Name = "cboCapabilities";
+            this.cboCapabilities.Size = new System.Drawing.Size(121, 21);
+            this.cboCapabilities.TabIndex = 13;
+            this.cboCapabilities.SelectedIndexChanged += new System.EventHandler(this.cbResolucao_SelectedIndexChanged);
             // 
             // lblResolucao
             // 
@@ -83,58 +83,58 @@
             this.lblDispositivo.TabIndex = 11;
             this.lblDispositivo.Text = "Dispositivo:";
             // 
-            // cbDispositivo
+            // cboDevices
             // 
-            this.cbDispositivo.FormattingEnabled = true;
-            this.cbDispositivo.Location = new System.Drawing.Point(1131, 11);
-            this.cbDispositivo.Name = "cbDispositivo";
-            this.cbDispositivo.Size = new System.Drawing.Size(121, 21);
-            this.cbDispositivo.TabIndex = 10;
-            this.cbDispositivo.SelectedIndexChanged += new System.EventHandler(this.cbDispositivo_SelectedIndexChanged);
+            this.cboDevices.FormattingEnabled = true;
+            this.cboDevices.Location = new System.Drawing.Point(1131, 11);
+            this.cboDevices.Name = "cboDevices";
+            this.cboDevices.Size = new System.Drawing.Size(121, 21);
+            this.cboDevices.TabIndex = 10;
+            this.cboDevices.SelectedIndexChanged += new System.EventHandler(this.cbDispositivo_SelectedIndexChanged);
             // 
-            // btExecutar
+            // btnExecute
             // 
-            this.btExecutar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btExecutar.Location = new System.Drawing.Point(1049, 428);
-            this.btExecutar.Name = "btExecutar";
-            this.btExecutar.Size = new System.Drawing.Size(197, 45);
-            this.btExecutar.TabIndex = 21;
-            this.btExecutar.Text = "Executar";
-            this.btExecutar.UseVisualStyleBackColor = true;
-            this.btExecutar.Click += new System.EventHandler(this.btExecutar_Click);
+            this.btnExecute.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExecute.Location = new System.Drawing.Point(1049, 428);
+            this.btnExecute.Name = "btnExecute";
+            this.btnExecute.Size = new System.Drawing.Size(197, 45);
+            this.btnExecute.TabIndex = 21;
+            this.btnExecute.Text = "Executar";
+            this.btnExecute.UseVisualStyleBackColor = true;
+            this.btnExecute.Click += new System.EventHandler(this.btExecutar_Click);
             // 
-            // btSair
+            // btnExit
             // 
-            this.btSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btSair.Location = new System.Drawing.Point(1049, 397);
-            this.btSair.Name = "btSair";
-            this.btSair.Size = new System.Drawing.Size(197, 25);
-            this.btSair.TabIndex = 20;
-            this.btSair.Text = "Sair";
-            this.btSair.UseVisualStyleBackColor = true;
-            this.btSair.Click += new System.EventHandler(this.btSair_Click);
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnExit.Location = new System.Drawing.Point(1049, 397);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(197, 25);
+            this.btnExit.TabIndex = 20;
+            this.btnExit.Text = "Sair";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btSair_Click);
             // 
-            // btSalvar
+            // btnSave
             // 
-            this.btSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btSalvar.Location = new System.Drawing.Point(1049, 366);
-            this.btSalvar.Name = "btSalvar";
-            this.btSalvar.Size = new System.Drawing.Size(197, 25);
-            this.btSalvar.TabIndex = 19;
-            this.btSalvar.Text = "Salvar";
-            this.btSalvar.UseVisualStyleBackColor = true;
-            this.btSalvar.Click += new System.EventHandler(this.btSalvar_Click);
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnSave.Location = new System.Drawing.Point(1049, 366);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(197, 25);
+            this.btnSave.TabIndex = 19;
+            this.btnSave.Text = "Salvar";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btSalvar_Click);
             // 
-            // btAnalisar
+            // btnAnalyse
             // 
-            this.btAnalisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btAnalisar.Location = new System.Drawing.Point(1048, 335);
-            this.btAnalisar.Name = "btAnalisar";
-            this.btAnalisar.Size = new System.Drawing.Size(197, 25);
-            this.btAnalisar.TabIndex = 18;
-            this.btAnalisar.Text = "Analisar";
-            this.btAnalisar.UseVisualStyleBackColor = true;
-            this.btAnalisar.Click += new System.EventHandler(this.btAnalisar_Click);
+            this.btnAnalyse.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnAnalyse.Location = new System.Drawing.Point(1048, 335);
+            this.btnAnalyse.Name = "btnAnalyse";
+            this.btnAnalyse.Size = new System.Drawing.Size(197, 25);
+            this.btnAnalyse.TabIndex = 18;
+            this.btnAnalyse.Text = "Analisar";
+            this.btnAnalyse.UseVisualStyleBackColor = true;
+            this.btnAnalyse.Click += new System.EventHandler(this.btAnalisar_Click);
             // 
             // gbFerramentas
             // 
@@ -150,16 +150,16 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 625);
-            this.Controls.Add(this.btExecutar);
-            this.Controls.Add(this.btSair);
+            this.Controls.Add(this.btnExecute);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.gbFerramentas);
-            this.Controls.Add(this.btSalvar);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.pbWebcam);
-            this.Controls.Add(this.btAnalisar);
-            this.Controls.Add(this.cbResolucao);
+            this.Controls.Add(this.btnAnalyse);
+            this.Controls.Add(this.cboCapabilities);
             this.Controls.Add(this.lblResolucao);
             this.Controls.Add(this.lblDispositivo);
-            this.Controls.Add(this.cbDispositivo);
+            this.Controls.Add(this.cboDevices);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -175,14 +175,14 @@
 
         #endregion
         private System.Windows.Forms.PictureBox pbWebcam;
-        private System.Windows.Forms.ComboBox cbResolucao;
+        private System.Windows.Forms.ComboBox cboCapabilities;
         private System.Windows.Forms.Label lblResolucao;
         private System.Windows.Forms.Label lblDispositivo;
-        private System.Windows.Forms.ComboBox cbDispositivo;
-        private System.Windows.Forms.Button btSair;
-        private System.Windows.Forms.Button btSalvar;
-        private System.Windows.Forms.Button btAnalisar;
-        private System.Windows.Forms.Button btExecutar;
+        private System.Windows.Forms.ComboBox cboDevices;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnAnalyse;
+        private System.Windows.Forms.Button btnExecute;
         private System.Windows.Forms.GroupBox gbFerramentas;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
