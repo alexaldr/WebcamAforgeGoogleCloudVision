@@ -67,7 +67,7 @@ namespace WebcamAforgeGoogleCloudVision
             {
                 foreach (VideoCapabilities capability in currentDevice.VideoCapabilities)
                 {
-                    cboCapabilities.Items.Add($"{capability.FrameSize.Width}x{capability.FrameSize.Height} - {capability.MaximumFrameRate} FPS" );
+                    cboCapabilities.Items.Add($"{capability.FrameSize.Width}x{capability.FrameSize.Height} - {capability.MaximumFrameRate} FPS");
                     hasResolution = true;
                 }
             }
@@ -92,9 +92,12 @@ namespace WebcamAforgeGoogleCloudVision
         {
             if (currentDevice != null)
             {
-                currentDevice.NewFrame += NovoFrame;
-                currentDevice.VideoResolution = currentDevice.VideoCapabilities[cboCapabilities.SelectedIndex];
-                currentDevice.Start();
+                lock (this)
+                {
+                    currentDevice.NewFrame += NovoFrame;
+                    currentDevice.VideoResolution = currentDevice.VideoCapabilities[cboCapabilities.SelectedIndex];
+                    currentDevice.Start();
+                }
             }
         }
 
@@ -110,7 +113,7 @@ namespace WebcamAforgeGoogleCloudVision
             pbWebcam.Image = null;
         }
 
-        private void NovoFrame(object sender, NewFrameEventArgs eventArgs)
+        private async void NovoFrame(object sender, NewFrameEventArgs eventArgs)
         {
             if (pbWebcam.Image != null)
             {
@@ -123,7 +126,20 @@ namespace WebcamAforgeGoogleCloudVision
             //{
             //    pbWebcam.Invoke(new Action(() => pbWebcam.Image = (Bitmap)eventArgs.Frame.Clone()));
             //}
-            pbWebcam.Image = (Bitmap)eventArgs.Frame.Clone();
+            //pbWebcam.Invoke((delegate)() =>
+            //this.pbWebcam.Invoke((MethodInvoker)delegate
+            //{
+            //    pbWebcam.Image = (Bitmap)eventArgs.Frame.Clone();
+            //});
+            //lock(this)
+            //{
+            if (pbWebcam.InvokeRequired)
+            {
+                pbWebcam.Image = (Bitmap)eventArgs.Frame.Clone();
+            }
+            //pbWebcam.Image = (Bitmap)eventArgs.Frame.Clone();
+            //}
+
         }
 
 

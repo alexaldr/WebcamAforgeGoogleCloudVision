@@ -48,7 +48,7 @@
             this.pbWebcam.BackColor = System.Drawing.Color.Gainsboro;
             this.pbWebcam.Location = new System.Drawing.Point(12, 12);
             this.pbWebcam.Name = "pbWebcam";
-            this.pbWebcam.Size = new System.Drawing.Size(1024, 601);
+            this.pbWebcam.Size = new System.Drawing.Size(1280, 720);
             this.pbWebcam.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbWebcam.TabIndex = 14;
             this.pbWebcam.TabStop = false;
@@ -57,7 +57,7 @@
             // cboCapabilities
             // 
             this.cboCapabilities.FormattingEnabled = true;
-            this.cboCapabilities.Location = new System.Drawing.Point(1131, 38);
+            this.cboCapabilities.Location = new System.Drawing.Point(1387, 38);
             this.cboCapabilities.Name = "cboCapabilities";
             this.cboCapabilities.Size = new System.Drawing.Size(121, 21);
             this.cboCapabilities.TabIndex = 13;
@@ -67,7 +67,7 @@
             // 
             this.lblResolucao.AutoSize = true;
             this.lblResolucao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblResolucao.Location = new System.Drawing.Point(1046, 39);
+            this.lblResolucao.Location = new System.Drawing.Point(1302, 39);
             this.lblResolucao.Name = "lblResolucao";
             this.lblResolucao.Size = new System.Drawing.Size(79, 17);
             this.lblResolucao.TabIndex = 12;
@@ -77,7 +77,7 @@
             // 
             this.lblDispositivo.AutoSize = true;
             this.lblDispositivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblDispositivo.Location = new System.Drawing.Point(1045, 12);
+            this.lblDispositivo.Location = new System.Drawing.Point(1301, 12);
             this.lblDispositivo.Name = "lblDispositivo";
             this.lblDispositivo.Size = new System.Drawing.Size(80, 17);
             this.lblDispositivo.TabIndex = 11;
@@ -86,7 +86,7 @@
             // cboDevices
             // 
             this.cboDevices.FormattingEnabled = true;
-            this.cboDevices.Location = new System.Drawing.Point(1131, 11);
+            this.cboDevices.Location = new System.Drawing.Point(1387, 11);
             this.cboDevices.Name = "cboDevices";
             this.cboDevices.Size = new System.Drawing.Size(121, 21);
             this.cboDevices.TabIndex = 10;
@@ -95,9 +95,9 @@
             // btnExecute
             // 
             this.btnExecute.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExecute.Location = new System.Drawing.Point(1049, 428);
+            this.btnExecute.Location = new System.Drawing.Point(1298, 687);
             this.btnExecute.Name = "btnExecute";
-            this.btnExecute.Size = new System.Drawing.Size(197, 45);
+            this.btnExecute.Size = new System.Drawing.Size(210, 45);
             this.btnExecute.TabIndex = 21;
             this.btnExecute.Text = "Executar";
             this.btnExecute.UseVisualStyleBackColor = true;
@@ -106,9 +106,9 @@
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnExit.Location = new System.Drawing.Point(1049, 397);
+            this.btnExit.Location = new System.Drawing.Point(1298, 656);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(197, 25);
+            this.btnExit.Size = new System.Drawing.Size(210, 25);
             this.btnExit.TabIndex = 20;
             this.btnExit.Text = "Sair";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -117,9 +117,9 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnSave.Location = new System.Drawing.Point(1049, 366);
+            this.btnSave.Location = new System.Drawing.Point(1298, 625);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(197, 25);
+            this.btnSave.Size = new System.Drawing.Size(210, 25);
             this.btnSave.TabIndex = 19;
             this.btnSave.Text = "Salvar";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -128,9 +128,9 @@
             // btnAnalyse
             // 
             this.btnAnalyse.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnAnalyse.Location = new System.Drawing.Point(1048, 335);
+            this.btnAnalyse.Location = new System.Drawing.Point(1297, 594);
             this.btnAnalyse.Name = "btnAnalyse";
-            this.btnAnalyse.Size = new System.Drawing.Size(197, 25);
+            this.btnAnalyse.Size = new System.Drawing.Size(211, 25);
             this.btnAnalyse.TabIndex = 18;
             this.btnAnalyse.Text = "Analisar";
             this.btnAnalyse.UseVisualStyleBackColor = true;
@@ -138,9 +138,9 @@
             // 
             // gbFerramentas
             // 
-            this.gbFerramentas.Location = new System.Drawing.Point(1042, 65);
+            this.gbFerramentas.Location = new System.Drawing.Point(1298, 65);
             this.gbFerramentas.Name = "gbFerramentas";
-            this.gbFerramentas.Size = new System.Drawing.Size(210, 251);
+            this.gbFerramentas.Size = new System.Drawing.Size(210, 523);
             this.gbFerramentas.TabIndex = 18;
             this.gbFerramentas.TabStop = false;
             this.gbFerramentas.Text = "Opções";
@@ -149,7 +149,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 625);
+            this.ClientSize = new System.Drawing.Size(1518, 744);
             this.Controls.Add(this.btnExecute);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.gbFerramentas);

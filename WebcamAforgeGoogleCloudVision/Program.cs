@@ -14,11 +14,12 @@ namespace WebcamAforgeGoogleCloudVision
         [STAThread]
         static void Main()
         {
-            
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //FormWebcam FormAlter = new FormWebcam();
-            Application.Run(new FormWebcam());// FormAlter);
+            FormWebcam formWebcam = new FormWebcam();
+            //Application.Run(new FormWebcam());// FormAlter);
+            Application.Run(formWebcam);
         }
     }
 }
