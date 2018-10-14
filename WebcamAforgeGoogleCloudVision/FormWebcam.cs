@@ -1,17 +1,21 @@
-﻿using System;
+﻿using AForge.Video;                 //framework adicionado pelo nuget
+using AForge.Video.DirectShow;      //framework adicionado pelo nuget
+using Google.Cloud.Vision.V1;       //api adicionada pelo nuget
+using System;
+
 //using System.Collections.Generic;
 //using System.ComponentModel;
 //using System.Data;
 using System.Drawing;
+
+//using Newtonsoft.Json;              //biblioteca adicionada pelo nuget
+using System.Drawing.Imaging;
+
 //using System.Linq;
 //using System.Text;
 //using System.Threading.Tasks;
 using System.Windows.Forms;
-using AForge.Video.DirectShow;      //framework adicionado pelo nuget
-using AForge.Video;                 //framework adicionado pelo nuget
-using Google.Cloud.Vision.V1;       //api adicionada pelo nuget
-//using Newtonsoft.Json;              //biblioteca adicionada pelo nuget
-using System.Drawing.Imaging;
+
 //using Google.Apis.Auth.OAuth2;
 //using System.IO;
 
@@ -120,7 +124,6 @@ namespace WebcamAforgeGoogleCloudVision
                 pbWebcam.Image.Dispose();
             }
 
-
             //Utilizar INVOKE PARA TENTAR RESOLEVR ESTE PROBLEMA
             //if (this.InvokeRequired)
             //{
@@ -139,11 +142,7 @@ namespace WebcamAforgeGoogleCloudVision
             }
             //pbWebcam.Image = (Bitmap)eventArgs.Frame.Clone();
             //}
-
         }
-
-
-
 
         private void btSair_Click(object sender, EventArgs e)
         {
@@ -152,7 +151,6 @@ namespace WebcamAforgeGoogleCloudVision
                 StopStream();
                 Application.Exit();
             }
-
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -217,7 +215,6 @@ namespace WebcamAforgeGoogleCloudVision
                     }
                     finally
                     {
-
                     }
                 }
                 else
@@ -227,12 +224,10 @@ namespace WebcamAforgeGoogleCloudVision
             }
         }
 
-
         private void btSalvar_Click(object sender, EventArgs e)
         {
             if (this.pbWebcam.Image != null)
             {
-
                 //remover o link
                 currentDevice.NewFrame -= NovoFrame;
 
@@ -241,7 +236,7 @@ namespace WebcamAforgeGoogleCloudVision
                 {
                     saveFileDialog.Filter = "Imagens (*.jpg)|*.jpg";
                     saveFileDialog.DefaultExt = "*.jpg";
-                    /*                     
+                    /*
                     JPEG
                     PNG8
                     PNG24
@@ -271,7 +266,6 @@ namespace WebcamAforgeGoogleCloudVision
                         }
                         finally
                         {
-
                         }
                     }
                     else
@@ -290,12 +284,10 @@ namespace WebcamAforgeGoogleCloudVision
 
         private void pbWebcam_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btExecutar_Click(object sender, EventArgs e)
         {
-
         }
     }
 }
